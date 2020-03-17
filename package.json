@@ -1,0 +1,27 @@
+{
+  "name": "rpdrbot",
+  "version": "1.0.0",
+  "description": "A Telegram bot for all matters RPDR",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aucoeur/rpdr-telegram-bot.git"
+  },
+  "author": "Aucoeur Ngo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aucoeur/rpdr-telegram-bot/issues"
+  },
+  "homepage": "https://github.com/aucoeur/rpdr-telegram-bot#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "node": "^12.16.1",
+    "node-telegram-bot-api": "^0.40.0"
+  }
+}
