@@ -22,15 +22,17 @@ const server = app.listen(process.env.PORT, "0.0.0.0", () => {
   console.log('Web server started at http://%s:%s', host, port);
 });
 
-let bot;
+// let bot;
 
-if(process.env.NODE_ENV === 'production') {
-  bot = new Bot(token);
-  bot.setWebHook(process.env.HEROKU_URL + bot.token);
-}
-else {
-  bot = new Bot(token, { polling: true });
-}
+// if(process.env.NODE_ENV === 'production') {
+//   bot = new Bot(token);
+//   bot.setWebHook(process.env.HEROKU_URL + bot.token);
+// }
+// else {
+//   bot = new Bot(token, { polling: true });
+// }
+
+const bot = new Bot(token, { polling: true });
 
 console.log('Bot server started in the ' + process.env.NODE_ENV + ' mode');
 
