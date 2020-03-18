@@ -19,19 +19,31 @@ load_dotenv()
 import os
 import logging
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
+from functools import wraps
 
 TOKEN = os.getenv("TOKEN")
 HEROKU_URL = os.getenv("HEROKU_URL")
+PORT = int(os.getenv('PORT', '8443'))
 
 # Enable logging
-logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
-                    level=logging.INFO)
+logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.INFO)
 
 logger = logging.getLogger(__name__)
 
-
 # Define a few command handlers. These usually take the two arguments update and
 # context. Error handlers also receive the raised TelegramError object in error.
+
+def send_typing_action(func):
+    """Sends typing action while processing func command with @send_typing_action wrapper"""
+
+    @wraps(func)
+    def command_func(update, context, *args, **kwargs):
+        context.bot.send_chat_action(chat_id=update.effective_message.chat_id, action=ChatAction.TYPING)
+        return func(update, context,  *args, **kwargs)
+
+    return command_func
+
+
 def start(update, context):
     """Send a message when the command /start is issued."""
     update.message.reply_text('Hi!')
@@ -47,6 +59,9 @@ def echo(update, context):
     update.message.reply_text(update.message.text)
 
 
+def unknown(update, context):
+    context.bot.send_message(chat_id=update.effective_chat.id, text="Sorry, I didn't understand that command.")
+
 def error(update, context):
     """Log Errors caused by Updates."""
     logger.warning('Update "%s" caused error "%s"', update, context.error)
@@ -54,7 +69,6 @@ def error(update, context):
 
 def main():
     """Start the bot."""
-    PORT = int(os.environ.get('PORT', '8443'))
     # Create the Updater and pass it your bot's token.
     # Make sure to set use_context=True to use the new context based callbacks
     # Post version 12 this will no longer be necessary
@@ -67,6 +81,10 @@ def main():
     dp.add_handler(CommandHandler("start", start))
     dp.add_handler(CommandHandler("help", help))
 
+    # for unknown commands
+    unknown_handler = MessageHandler(Filters.command, unknown)
+    dp.add_handler(unknown_handler)
+
     # on noncommand i.e message - echo the message on Telegram
     dp.add_handler(MessageHandler(Filters.text, echo))
 
@@ -74,13 +92,16 @@ def main():
     dp.add_error_handler(error)
 
     # Start the Bot
-    # updater.start_polling()
-    # add handlers
-    updater.start_webhook(listen="0.0.0.0",
-                          port=PORT,
-                          url_path=TOKEN)
-    updater.bot.set_webhook(HEROKU_URL + TOKEN)
-
+    if os.getenv('ENV') == 'dev':
+        # Use polling
+        updater.start_polling()
+        print('Running local dev envrionment')
+    else:
+        # Use heroku webhook
+        updater.start_webhook(listen="0.0.0.0",
+                            port=PORT,
+                            url_path=TOKEN)
+        updater.bot.set_webhook(HEROKU_URL + TOKEN)
 
     # Run the bot until you press Ctrl-C or the process receives SIGINT,
     # SIGTERM or SIGABRT. This should be used most of the time, since
