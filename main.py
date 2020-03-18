@@ -21,7 +21,7 @@ import logging
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
 
 TOKEN = os.getenv("TOKEN")
-WEBHOOK = os.getenv("HEROKU_URL")
+HEROKU_URL = os.getenv("HEROKU_URL")
 
 # Enable logging
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
