@@ -21,6 +21,7 @@ import logging
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
 
 TOKEN = os.getenv("TOKEN")
+WEBHOOK = os.getenv("HEROKU_URL")
 
 # Enable logging
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
@@ -78,7 +79,7 @@ def main():
     updater.start_webhook(listen="0.0.0.0",
                           port=PORT,
                           url_path=TOKEN)
-    updater.bot.set_webhook("https://rpdrbot.herokuapp.com/" + TOKEN)
+    updater.bot.set_webhook(HEROKU_URL + TOKEN)
 
 
     # Run the bot until you press Ctrl-C or the process receives SIGINT,
