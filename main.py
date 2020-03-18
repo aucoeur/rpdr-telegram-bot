@@ -23,10 +23,7 @@ from functools import wraps
 
 TOKEN = os.getenv("TOKEN")
 HEROKU_URL = os.getenv("HEROKU_URL")
-<<<<<<< HEAD
 PORT = int(os.getenv('PORT', '8443'))
-=======
->>>>>>> c23abc2ba039c13dd45cb5f95e6ef1c5dba8ca25
 
 # Enable logging
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.INFO)
