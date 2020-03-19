@@ -15,7 +15,7 @@ chatbot = ChatBot('RPDR bot',
         'import_path': 'chatterbot.logic.BestMatch',
         "statement_comparison_function": comparisons.levenshtein_distance,
         'default_response': 'I think I misunderstood the assignment.',
-        'maximum_similarity_threshold': 0.5}]
+        'maximum_similarity_threshold': 0.5}],
         tie_breaking_method="random_response"
     )
 
