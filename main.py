@@ -20,6 +20,7 @@ import logging
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
 
 from gif import gif_random
+from chatbot import reply
 
 load_dotenv()
 
@@ -40,11 +41,6 @@ def start(update, context):
 def help(update, context):
     """Send a message when the command /help is issued."""
     update.message.reply_text('Who\'s after Peppermint? Not Shea Coulee!')
-
-
-def reply(update, context):
-    """Echo the user message."""
-    update.message.reply_text(update.message.text)
 
 def unknown(update, context):
     """Sends message in event of unknown command.  Must be placed last"""
