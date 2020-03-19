@@ -43,13 +43,12 @@ def help(update, context):
     update.message.reply_text('Who\'s after Peppermint? Not Shea Coulee!')
 
 
-def echo(update, context):
+def reply(update, context):
     """Echo the user message."""
     update.message.reply_text(update.message.text)
 
-# for unknown commands
-
 def unknown(update, context):
+    """Sends message in event of unknown command.  Must be placed last"""
     context.bot.send_message(chat_id=update.effective_chat.id, text="Ex-squeeeeeeeze me???")
 
 def error(update, context):
@@ -75,7 +74,7 @@ def main():
     dp.add_handler(MessageHandler(Filters.command, unknown))
 
     # Message (non-command) Handler - echo the message on Telegram
-    dp.add_handler(MessageHandler(Filters.text, echo))
+    dp.add_handler(MessageHandler(Filters.text, reply))
 
     # log all errors
     dp.add_error_handler(error)
