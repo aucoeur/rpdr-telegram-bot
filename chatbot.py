@@ -9,8 +9,8 @@ load_dotenv()
 # MONGODB_URI = os.getenv(MONGODB_URI)
 
 chatbot = ChatBot('RPDR bot',
-        storage_adapter='chatterbot.storage.MongoDatabaseAdapter',
-        database_uri='mongodb://localhost:27017/rpdr-chatterbot',
+        # storage_adapter='chatterbot.storage.MongoDatabaseAdapter',
+        # database_uri='mongodb://localhost:27017/rpdr-chatterbot',
         logic_adapters=[{
         'import_path': 'chatterbot.logic.BestMatch',
         "statement_comparison_function": comparisons.levenshtein_distance,
