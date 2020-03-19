@@ -16,6 +16,7 @@ chatbot = ChatBot('RPDR bot',
         "statement_comparison_function": comparisons.levenshtein_distance,
         'default_response': 'I think I misunderstood the assignment.',
         'maximum_similarity_threshold': 0.5}]
+        tie_breaking_method="random_response"
     )
 
 @send_typing_action
