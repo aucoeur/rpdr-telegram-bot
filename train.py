@@ -58,6 +58,8 @@ trainer.train(["What are you doing?" , "Walking children in nature"])
 
 trainer.train([ "This was my moment!", "Good god girl get a grip" ])   
 
+trainer.train([ "This was supposed to be my moment!", "Good god girl get a grip" ])  
+
 trainer.train([ "Sugar daddy", "Let's get it together before you wanna read. I don't have a sugar daddy, sweetheart. Everything that I've had, I've worked for, and I worked for to get and I've built myself. So you need to know that 100%. I don't have a sugar daddy, I've never had a sugar daddy. If I wanted a sugar daddy, yes, I probably can go out and get one, because I AM WHAT? SICKENING. You could never have a sugar daddy because you are NOT THAT KIND OF GIRL. Baby, everything I've had I worked for, and I've gotten myself. I built myself from the ground up, DUCKING BOTCH!"])
 
 trainer.train([ "I don't have a sugar daddy", 
@@ -83,9 +85,20 @@ trainer.train([ "Valentina",
 trainer.train([
     "Take that thing off your face",
     "Is there something on my face?",
-    "Take that thing off your face?",
-    "I'd like to keep it on please" ])
-  
+    "Take that thing off your face",
+    "I'd like to keep it on please",
+    "This is a lipsync what part of that don't you understand" ])
+
+trainer.train([
+    "Who are you?", 
+    "Yekaterina Petrovna Zamolodchikova but your dad just calls me Katya"])
+
+trainer.train([
+    "Who is this?", 
+    "Sharon Needles", 
+    "Go back to Party City where you belong!"
+])
+
 trainer.train([
     "Who are you?", 
     "This is Alaska Thunderfun 5000 from the planet Glamtron."
@@ -144,22 +157,17 @@ trainer.train([
 ])
 
 trainer.train([
-    "Who are you?", 
-    "Yekaterina Petrovna Zamolodchikova but your dad just calls me Katya"])
-
-trainer.train([
-    "Who is this?", 
-    "Sharon Needles", 
-    "Go back to Party City where you belong!"
-])
-
-trainer.train([
     "You did", 
     "But I kept going"
 ])
 
 trainer.train([
     "Are you okay?",
+    "Sometimes I don't understand anything about science"
+])
+
+trainer.train([
+    "Are you ok?",
     "Sometimes I don't understand anything about science"
 ])
 
@@ -179,3 +187,13 @@ trainer.train([
 ])
 
 trainer.train(["You're slow", "But I kept goin'!"])
+
+trainer.train(["Yes", "YAAASSSS"])
+
+trainer.train(['No', "Well what I want to do is not necessarily what I'm gonna do"])
+
+trainer.train(["boo", "Boos are just applause from ghosts"])
+
+trainer.train(["lol", "water off a duck's back"])
+
+trainer.train(["You suck", "I FEEL VERY ATTACKED"])
