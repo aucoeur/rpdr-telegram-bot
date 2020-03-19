@@ -1,13 +1,15 @@
 from chatbot import chatbot
 from chatterbot.trainers import ChatterBotCorpusTrainer, ListTrainer
 
-# trainer = ChatterBotCorpusTrainer(chatbot), 
 
-# trainer.train(
-#     "./chat/data/rpdr.yml" 
-# )
 
 '''Only needs to be run once'''
+corpustrainer = ChatterBotCorpusTrainer(chatbot)
+
+corpustrainer.train(
+    "chatterbot.corpus.english.greetings",
+    "chatterbot.corpus.english.conversations"
+)
 
 trainer = ListTrainer(chatbot)
 
