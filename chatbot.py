@@ -1,7 +1,7 @@
 import os
 from dotenv import load_dotenv
 
-from chatterbot import ChatBot, comparisons
+from chatterbot import ChatBot, comparisons, filters
 from functools import wraps
 from utils import send_typing_action
 
@@ -12,11 +12,12 @@ chatbot = ChatBot('RPDR bot',
         # storage_adapter='chatterbot.storage.MongoDatabaseAdapter',
         # database_uri='mongodb://localhost:27017/rpdr-chatterbot',
         logic_adapters=[{
-        'import_path': 'chatterbot.logic.BestMatch',
-        "statement_comparison_function": comparisons.levenshtein_distance,
-        'default_response': 'I think I misunderstood the assignment.',
-        'maximum_similarity_threshold': 0.5}],
-        tie_breaking_method="random_response"
+            'import_path': 'chatterbot.logic.BestMatch',
+            "statement_comparison_function": comparisons.levenshtein_distance,
+            'default_response': 'I think I misunderstood the assignment.',
+            'maximum_similarity_threshold': 0.5}],
+        tie_breaking_method="random_response",
+        filters=[filters.get_recent_repeated_responses]
     )
 
 @send_typing_action
