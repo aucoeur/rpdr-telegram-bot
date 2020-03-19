@@ -33,7 +33,6 @@ logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s
 logger = logging.getLogger(__name__)
 
 # Basic command functions
-
 def start(update, context):
     """Send a message when the command /start is issued."""
     update.message.reply_text('Hi! Hello! How are you?')
@@ -42,14 +41,12 @@ def help(update, context):
     """Send a message when the command /help is issued."""
     update.message.reply_text('Who\'s after Peppermint? Not Shea Coulee!')
 
-
 def echo(update, context):
     """Echo the user message."""
     update.message.reply_text(update.message.text)
 
-# for unknown commands
-
 def unknown(update, context):
+    """Response for unrecognized commands"""
     context.bot.send_message(chat_id=update.effective_chat.id, text="Ex-squeeeeeeeze me???")
 
 def error(update, context):

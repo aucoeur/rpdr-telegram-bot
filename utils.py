@@ -1,5 +1,5 @@
 from telegram import ChatAction
-from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
+from telegram.ext import Updater
 from functools import wraps
 
 def send_typing_action(func):

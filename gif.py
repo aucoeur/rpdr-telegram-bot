@@ -5,7 +5,6 @@ from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
 from functools import wraps
 from utils import send_typing_action
 
-
 load_dotenv()
 pp = pprint.PrettyPrinter(indent=1)
 
